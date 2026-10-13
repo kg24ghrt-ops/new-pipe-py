@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@3f0f2c0a3e309c5d4c6f4b8a5b5b5b5b5b5b5b5b # v4.2.1
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
@@ -42,7 +42,7 @@ jobs:
 
       - name: Upload lint results
         if: always()
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: lint-results
           path: |
@@ -52,7 +52,7 @@ jobs:
 
       - name: Upload unit test reports
         if: always()
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: unit-test-reports
           path: |
@@ -62,7 +62,7 @@ jobs:
 
       - name: Upload Detekt report
         if: always()
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: detekt-report
           path: app/build/reports/detekt/detekt.html
@@ -74,17 +74,17 @@ jobs:
     needs: fast-checks
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@3f0f2c0a3e309c5d4c6f4b8a5b5b5b5b5b5b5b5b # v4.2.1
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
           cache: gradle
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@4f7f4f9e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e # v3.2.0
+        uses: android-actions/setup-android@v3
         with:
           api-level: 36
           build-tools-version: '36.0.0'
@@ -98,7 +98,7 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Upload Debug APK
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
@@ -111,17 +111,17 @@ jobs:
     needs: fast-checks
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@3f0f2c0a3e309c5d4c6f4b8a5b5b5b5b5b5b5b5b # v4.2.1
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
           cache: gradle
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@4f7f4f9e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e # v3.2.0
+        uses: android-actions/setup-android@v3
         with:
           api-level: 36
           build-tools-version: '36.0.0'
@@ -146,7 +146,7 @@ jobs:
 
       - name: Upload instrumented test reports
         if: always()
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: instrumented-test-reports
           path: |
@@ -160,17 +160,17 @@ jobs:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@3f0f2c0a3e309c5d4c6f4b8a5b5b5b5b5b5b5b5b # v4.2.1
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
           cache: gradle
 
       - name: Run dependency check
-        uses: dependency-check/Dependency-Check_Action@8d9c3c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c # v10.0.1
+        uses: dependency-check/Dependency-Check_Action@main
         id: depcheck
         with:
           project: 'pip'
@@ -184,7 +184,7 @@ jobs:
 
       - name: Upload dependency check report
         if: always()
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: dependency-check-report
           path: reports/dependency-check-report.html
@@ -197,17 +197,17 @@ jobs:
     needs: [fast-checks, build]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@3f0f2c0a3e309c5d4c6f4b8a5b5b5b5b5b5b5b5b # v4.2.1
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
           cache: gradle
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@4f7f4f9e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e # v3.2.0
+        uses: android-actions/setup-android@v3
         with:
           api-level: 36
           build-tools-version: '36.0.0'
@@ -224,14 +224,14 @@ jobs:
         run: ./gradlew bundleRelease
 
       - name: Upload Release APK
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: app/build/outputs/apk/release/*.apk
           retention-days: 7
 
       - name: Upload Release AAB
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68395b1c86c9e6c5b5b5b5b # v4.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: release-aab
           path: app/build/outputs/bundle/release/*.aab
