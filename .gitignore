@@ -4,21 +4,86 @@
 *.aab
 *.dex
 *.class
-bin/
-gen/
-out/
+*.so
+*.o
+
+# Gradle
 .gradle/
 build/
+**/build/
+*.gradle.kts.d/
+*.gradle.d/
+!gradle-wrapper.jar
+
+# Local configuration
 local.properties
+gradle.properties.local
+
+# ProGuard
 proguard/
+*.proguard
+
+# Logs
 *.log
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
 .navigation/
 captures/
-*.iml
-.idea/
+
+# Keystore
 *.jks
 *.keystore
-.externalNativeBuild
+*.pk8
+*.pem
+
+# Native / C++ / Rust
+.externalNativeBuild/
 .cxx/
-google-services.json
-vcs.xml
+target/
+Cargo.lock
+**/target/
+
+# Generated files
+generated/
+*.generated.*
+
+# Coverage reports
+*.ec
+*.exec
+coverage/
+*.lcov
+
+# Test reports (generated)
+**/build/reports/tests/
+**/build/test-results/
+**/build/reports/androidTests/
+**/build/outputs/androidTest-results/
+
+# Lint reports
+**/build/reports/lint-results*.html
+**/build/reports/lint-results*.xml
+
+# Detekt reports
+**/build/reports/detekt/
+
+# Compose preview outputs
+**/build/outputs/compose-preview/
+
+# Dependency check
+reports/
+dependency-check-report.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
