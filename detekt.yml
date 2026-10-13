@@ -1,0 +1,211 @@
+build:
+  maxIssues: 0
+  weights:
+    complexity: 2
+    LongParameterList: 1
+    style: 1
+    comments: 1
+
+formatting:
+  MaximumLineLength:
+    maxLineLength: 120
+    excludePackageStatements: true
+    excludeImportStatements: true
+    excludeCommentStatements: false
+  Indentation:
+    indentSize: 4
+    continuationIndentSize: 4
+
+style:
+  WildcardImport:
+    excludeImports:
+      - 'java.util.*'
+      - 'kotlinx.android.synthetic.*'
+  UtilityClass:
+    ignoreOverridable: true
+  NoTabs:
+    allowTrailingTabs: false
+  MagicNumber:
+    ignoreNumbers: '-1, 0, 1, 2'
+    ignorePropertyDeclaration: true
+    ignoreLocalVariableDeclaration: true
+    ignoreConstantDeclaration: true
+    ignoreFunctionCall: true
+    ignoreNamedArgument: true
+  MaxLineLength:
+    maxLineLength: 120
+  FunctionOnlyReturningConstant:
+    ignoreOverridable: true
+    excludedFunctions:
+      - 'serialVersionUID'
+      - 'describeContents'
+  UnnecessaryAbstractClass:
+    allowedAnnotations:
+      - 'androidx.compose.runtime.Composable'
+  ReturnCount:
+    max: 5
+  FunctionParameterCount:
+    threshold: 6
+  ClassMemberCount:
+    threshold: 30
+
+complexity:
+  LongMethod:
+    threshold: 60
+  LongParameterList:
+    threshold: 6
+  ComplexMethod:
+    threshold: 15
+  ComplexCondition:
+    threshold: 4
+  TooManyFunctions:
+    thresholdInFiles: 11
+    thresholdInClasses: 11
+    thresholdInInterfaces: 11
+    thresholdInEnums: 11
+    thresholdInObjects: 11
+  LabeledExpression:
+    allowedLabels: []
+  NestedBlockDepth:
+    threshold: 4
+  FunctionOnlyReturningConstant:
+    ignoreOverridable: true
+    excludedFunctions:
+      - 'serialVersionUID'
+      - 'describeContents'
+
+naming:
+  FunctionNaming:
+    ignoreOverridden: true
+    ignoreOverriddenFunction: true
+  VariableNaming:
+    ignoreOverridden: true
+    ignoreOverriddenFunction: true
+  MemberName:
+    ignoreOverridden: true
+  ClassNaming:
+    ignoreOverridden: true
+  EnumNaming:
+    ignoreOverridden: true
+
+exceptions:
+  TooGenericExceptionCaught:
+    allowedExceptions:
+      - 'Exception'
+      - 'Throwable'
+  ThrowingExceptionFromFinally:
+    enabled: false
+  ThrowingExceptionsWithoutMessageOrCause:
+    enabled: false
+  ThrowingRawExceptionTypes:
+    enabled: false
+  ExceptionRaisedInUnexpectedLocation:
+    enabled: false
+  NotImplementedDeclaration:
+    enabled: false
+
+potential-bugs:
+  UnreachableCode:
+    enabled: true
+  UnusedPrivateMember:
+    allowedAnnotations:
+      - 'Preview'
+      - 'Composable'
+      - 'ComposablePreview'
+      - 'Suppress'
+      - 'PreviewParameterProvider'
+  UnusedPrivateProperty:
+    allowedAnnotations:
+      - 'Preview'
+      - 'Composable'
+      - 'ComposablePreview'
+      - 'Suppress'
+      - 'PreviewParameterProvider'
+
+comments:
+  UndocumentedPublicClass:
+    enabled: false
+  UndocumentedPublicFunction:
+    enabled: false
+  MissingOverride:
+    enabled: true
+
+errors:
+  MissingSerialVersionUID:
+    enabled: false
+
+empty-blocks:
+  EmptyCatchBlock:
+    allowedTypeNamesRegex: '.*'
+  EmptyDoWhileBlock:
+    enabled: true
+  EmptyElseBlock:
+    enabled: true
+  EmptyFinallyBlock:
+    enabled: true
+  EmptyIfBlock:
+    enabled: true
+  EmptyTryBlock:
+    enabled: true
+  EmptyWhenBranch:
+    enabled: true
+  EmptyFunctionBlock:
+    allowedAnnotations:
+      - 'Preview'
+      - 'Composable'
+      - 'ComposablePreview'
+      - 'Suppress'
+      - 'PreviewParameterProvider'
+    enabled: true
+  EmptyClassBlock:
+    enabled: false
+  EmptySecondaryConstructorBlock:
+    enabled: true
+  EmptyInitBlock:
+    enabled: true
+  EmptyDefaultConstructorBlock:
+    enabled: true
+
+package-attributes:
+  requiredPackageAttributes:
+    - 'author'
+    - 'version'
+
+code-style:
+  ForbiddenComment:
+    enabled: false
+  ForbiddenImport:
+    enabled: false
+  ForbiddenMethodCall:
+    enabled: false
+  ForbiddenPublicDataClass:
+    enabled: false
+  ForbiddenSuppress:
+    enabled: false
+  ForbiddenVoid:
+    enabled: false
+  FunctionOnlyReturningConstant:
+    ignoreOverridable: true
+    excludedFunctions:
+      - 'serialVersionUID'
+      - 'describeContents'
+  MaxLineLength:
+    maxLineLength: 120
+  NamedArguments:
+    enabled: false
+  NewLineAtEndOfFile:
+    enabled: true
+  NoTabs:
+    enabled: true
+  ReturnCount:
+    max: 5
+  SpreadOperator:
+    enabled: true
+  ThrowsCount:
+    max: 3
+  WildcardImport:
+    excludeImports:
+      - 'java.util.*'
+      - 'kotlinx.android.synthetic.*'
+  UtilityClass:
+    ignoreOverridable: true
