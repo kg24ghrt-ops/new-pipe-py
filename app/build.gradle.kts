@@ -4,6 +4,26 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
     id("io.gitlab.arturbosch.detekt")
 }
+
+detekt {
+    toolVersion = "1.23.6"
+    input = files("src/main/kotlin")
+    filters = ".*/test/.*,.*/androidTest/.*,.*/build/.*,.*/generated/.*"
+    config = files("../detekt.yml")
+    baseline = file("../detekt-baseline.xml")
+    reports {
+        html.required.set(true)
+        xml.required.set(true)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
+    }
+}
+
+tasks.named("detekt") {
+    dependsOn("detektGenerateBaseline")
+}
+
 android {
     namespace = "com.example.pip"
     compileSdk = 36

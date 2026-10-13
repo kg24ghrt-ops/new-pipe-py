@@ -5,7 +5,3 @@ plugins {
     id("org.jetbrains.kotlin.kapt") version "2.0.21" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.6" apply false
 }
-
-subprojects {
-    apply(from = rootProject.file("detekt.gradle.kts"))
-}
