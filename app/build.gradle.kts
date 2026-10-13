@@ -5,24 +5,9 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-detekt {
-    toolVersion = "1.23.6"
-    config = files("../detekt.yml")
-    baseline = file("../detekt-baseline.xml")
-    input = files("src/main/kotlin")
-    filters = ".*/test/.*,.*/androidTest/.*,.*/build/.*,.*/generated/.*"
-    reports {
-        html.required.set(true)
-        xml.required.set(true)
-        txt.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
-    }
-}
-
-tasks.named("detekt") {
-    dependsOn("detektGenerateBaseline")
-}
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektExtension
+import io.gitlab.arturbosch.detekt.DetektReports
 
 android {
     namespace = "com.example.pip"
@@ -88,4 +73,26 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.7")
     androidTestImplementation("androidx.compose.ui:ui-test-manifest:1.6.7")
+}
+
+detekt {
+    toolVersion = "1.23.6"
+    config.setFrom(files("../detekt.yml"))
+    baseline.set(file("../detekt-baseline.xml"))
+    source("src/main/kotlin")
+    exclude("**/test/**", "**/androidTest/**", "**/build/**", "**/generated/**")
+}
+
+tasks.withType<Detekt> {
+    reports {
+        html.required.set(true)
+        xml.required.set(true)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
+    }
+}
+
+tasks.named("detekt") {
+    dependsOn("detektGenerateBaseline")
 }
