@@ -7,13 +7,10 @@ plugins {
 
 detekt {
     toolVersion = "1.23.6"
-    config.setFrom(files("../detekt.yml"))
-    baseline.set(file("../detekt-baseline.xml"))
-    source("src/main/kotlin")
-    exclude("**/test/**", "**/androidTest/**", "**/build/**", "**/generated/**")
-}
-
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
+    config = files("../detekt.yml")
+    baseline = file("../detekt-baseline.xml")
+    input = files("src/main/kotlin")
+    filters = ".*/test/.*,.*/androidTest/.*,.*/build/.*,.*/generated/.*"
     reports {
         html.required.set(true)
         xml.required.set(true)
